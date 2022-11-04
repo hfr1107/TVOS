@@ -1,5 +1,4 @@
 name: HomeTV
-
 on:
   schedule:
     - cron: 45 2 * * *
