@@ -51,6 +51,7 @@ jobs:
         if: ${{ env.commit }}
         working-directory: ${{ env.repoName }}
         run: |
+        
           export LESSCHARSET=utf-8
           if [ "${{ env.commit }}" == "${{ env.lastCommit }}" ]; then
             COMMIT_MESSAGE="$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))"  "`git log --pretty=format:%B ${{ env.commitS }} -1 |sed -e 's# \{2,\}#\n#g' -e '/^Merge pull/d' -e 's#"#\\"#g' -e '/^$/d' |cat -n |sort -k2,2 -k1,1n |uniq -f1 |sort -k1,1n |cut -f2- `")"
@@ -102,6 +103,12 @@ jobs:
       - name: Release Apk Sign
         working-directory: source/
         run: |
+        sed -i 's/create("", 0)/create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+        sed -i 's/create("", 1)/create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 0)/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+        sed -i 's/create("", 2)/create("https://tool.weetai.cn/api", 0)/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+        sed -i 's/"https://raw.githubusercontent.com/FongMi/TV/release/release/"/"https://raw.githubusercontent.com/hfr1107/BearTV/release/release/"/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+        sed -i 's/".apk"/"1.apk"/g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+        sed -i 's/.json/1.json/g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
           signingConfigs='ICAgIHNpZ25pbmdDb25maWdzIHtcCiAgICAgICAgaWYgKHByb2plY3QuaGFzUHJvcGVydHkoIlJFTEVBU0VfU1RPUkVfRklMRSIpKSB7XAogICAgICAgICAgICBteUNvbmZpZyB7XAogICAgICAgICAgICAgICAgc3RvcmVGaWxlIGZpbGUoUkVMRUFTRV9TVE9SRV9GSUxFKVwKICAgICAgICAgICAgICAgIHN0b3JlUGFzc3dvcmQgUkVMRUFTRV9TVE9SRV9QQVNTV09SRFwKICAgICAgICAgICAgICAgIGtleUFsaWFzIFJFTEVBU0VfS0VZX0FMSUFTXAogICAgICAgICAgICAgICAga2V5UGFzc3dvcmQgUkVMRUFTRV9LRVlfUEFTU1dPUkRcCiAgICAgICAgICAgICAgICB2MVNpZ25pbmdFbmFibGVkIHRydWVcCiAgICAgICAgICAgICAgICB2MlNpZ25pbmdFbmFibGVkIHRydWVcCiAgICAgICAgICAgICAgICBlbmFibGVWM1NpZ25pbmcgPSB0cnVlXAogICAgICAgICAgICAgICAgZW5hYmxlVjRTaWduaW5nID0gdHJ1ZVwKICAgICAgICAgICAgfVwKICAgICAgICB9XAogICAgfVwKXA=='
           signingConfig='ICAgICAgICAgICAgaWYgKHByb2plY3QuaGFzUHJvcGVydHkoIlJFTEVBU0VfU1RPUkVfRklMRSIpKSB7XAogICAgICAgICAgICAgICAgc2lnbmluZ0NvbmZpZyBzaWduaW5nQ29uZmlncy5teUNvbmZpZ1wKICAgICAgICAgICAgfVwK'
           signingConfigs="$(echo "$signingConfigs" |base64 -d )"
