@@ -1,4 +1,4 @@
-name: 蜂蜜TV
+name: HomeTV
 
 on:
   schedule:
@@ -10,7 +10,7 @@ env:
   userName: FongMi
   repoName: TV
   branchName: dev
-  appName: 蜂蜜TV
+  appName: HomeTV
 
 jobs:
   prepare:
