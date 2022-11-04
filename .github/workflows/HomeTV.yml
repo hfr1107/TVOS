@@ -37,12 +37,12 @@ jobs:
           fi
       - name: DIY
         run: |
-         sed -i 's/create("", 0)/create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
-         sed -i 's/create("", 1)/create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 1)/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
-         sed -i 's/create("", 2)/create("https://tool.weetai.cn/api", 2)/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
-         sed -i 's/"https://raw.githubusercontent.com/FongMi/TV/release/release/"/"https://raw.githubusercontent.com/hfr1107/BearTV/release/release/"/' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
-         sed -i 's/".apk"/"1.apk"/g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
-         sed -i 's/.json/1.json/g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+          sed -i 's|create("", 0)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+          sed -i 's|create("", 1)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 1)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+          sed -i 's|create("", 2)|create("https://tool.weetai.cn/api", 2)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+          sed -i 's|"https://raw.githubusercontent.com/FongMi/TV/release/release/"|"https://raw.githubusercontent.com/hfr1107/BearTV/release/release/"|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+          sed -i 's|".apk"|"1.apk"|g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+          sed -i 's|.json|1.json|g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
       - name: Checkout Source Code
         if: ${{ env.commit }}
         run: |
