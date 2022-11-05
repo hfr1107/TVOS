@@ -46,8 +46,8 @@ jobs:
           #tag
           tag="$(git log --date=format:'%Y%m%d-%H%M' --pretty=format:%cd ${{ env.commitS }} -1)"
           echo "tag=$tag" >> $GITHUB_ENV
-        - name: Option For Test
-       #working-directory: BearTV
+      - name: Option For Test
+       working-directory: BearTV
        run: |
         sed -i 's|create("", 0)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)|' home/runner/work/tvbox-2/tvbox-2/BearTV/app/src/main/java/com/fongmi/android/tv/bean/Config.java
         sed -i 's|create("", 1)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 1)|' home/runner/work/tvbox-2/tvbox-2/BearTV/app/src/main/java/com/fongmi/android/tv/bean/Config.java
