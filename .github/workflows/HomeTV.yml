@@ -115,10 +115,10 @@ jobs:
           sed -i '$a\RELEASE_KEY_ALIAS=${{ secrets.ALIAS }}'            ./gradle.properties
           sed -i '$a\RELEASE_STORE_PASSWORD=${{ secrets.PW }}'       ./gradle.properties
           sed -i '$a\RELEASE_KEY_PASSWORD=${{ secrets.PW }}'         ./gradle.properties
-          sed -i 's/create(\"\", 0)/create(\"https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/beartv.json\", 0)/' app/src/main/java/com/fongmi/android/tv/bean/Config.java
-          sed -i 's/create(\"\", 1)/create(\"https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/live\/zb.txt\", 1)/' app/src/main/java/com/fongmi/android/tv/bean/Config.java
-          sed -i 's/create(\"\", 2)/create(\"https:\/\/tool.weetai.cn\/api\", 2)/' app/src/main/java/com/fongmi/android/tv/bean/Config.java
-          sed -i 's/FongMi\/TV/hfr1107\/BearTV/' app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+          sed -i 's/create(\"\", 0)/create(\"https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/beartv.json\", 0)/' ./app/src/main/java/com/fongmi/android/tv/bean/Config.java
+          sed -i 's/create(\"\", 1)/create(\"https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/live\/zb.txt\", 1)/' ./app/src/main/java/com/fongmi/android/tv/bean/Config.java
+          sed -i 's/create(\"\", 2)/create(\"https:\/\/tool.weetai.cn\/api\", 2)/' ./app/src/main/java/com/fongmi/android/tv/bean/Config.java
+          sed -i 's/FongMi\/TV/hfr1107\/BearTV/' ./app/src/main/java/com/fongmi/android/tv/utils/Updater.java
       - name: Build With Gradle
         continue-on-error: true
         working-directory: source/
