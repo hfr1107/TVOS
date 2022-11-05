@@ -40,18 +40,17 @@ jobs:
         run: |
           git clone ${{ env.upStream }} ${{ env.repoName }}
           #获取目录
-           CURRENT_DIR=$(cd $(dirname $0); pwd)
-           num=$(find $CURRENT_DIR -name gradlew | grep -v exo | awk -F"/" '{print NF-1}')
-           DIR=$(find $CURRENT_DIR -name gradlew | grep -v exo | cut -d \/ -f$num)
-           cd $CURRENT_DIR/$DIR
+          num=$(find ${{ github.workspace }} -name gradlew | grep -v exo | awk -F"/" '{print NF-1}')
+          DIR=$(find ${{ github.workspace }} -name gradlew | grep -v exo | cut -d \/ -f$num)
+          cd  ${{ github.workspace }}/$DIR
            #删除release的APK
            rm -rf $CURRENT_DIR/$DIR/release/*
-           sed -i 's|create("", 0)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
-           sed -i 's|create("", 1)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 1)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
-           sed -i 's|create("", 2)|create("https://tool.weetai.cn/api", 2)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
-           sed -i 's|"https://raw.githubusercontent.com/FongMi/TV/release/release/"|"https://raw.githubusercontent.com/hfr1107/BearTV/release/release/"|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
-           sed -i 's|".apk"|"1.apk"|g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
-           sed -i 's|.json|1.json|g' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+           sed -i 's|create("", 0)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)|' ${{ github.workspace }}/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+           sed -i 's|create("", 1)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 1)|' ${{ github.workspace }}/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+           sed -i 's|create("", 2)|create("https://tool.weetai.cn/api", 2)|' ${{ github.workspace }}/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+           sed -i 's|"https://raw.githubusercontent.com/FongMi/TV/release/release/"|"https://raw.githubusercontent.com/hfr1107/BearTV/release/release/"|' ${{ github.workspace }}/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+           sed -i 's|".apk"|"1.apk"|g' ${{ github.workspace }}/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+           sed -i 's|.json|1.json|g' ${{ github.workspace }}/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
           cd ${{ env.repoName }}
           git checkout ${{ env.commit }}
           #zip
