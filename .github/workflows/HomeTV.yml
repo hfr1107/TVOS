@@ -1,4 +1,4 @@
-name: HomeTV
+name: BearTV
 on:
   schedule:
     - cron: 45 2 * * *
@@ -9,7 +9,7 @@ env:
   userName: hfr1107
   repoName: BearTV
   branchName: dev
-  appName: HomeTV
+  appName: BearTV
 
 jobs:
   prepare:
@@ -49,7 +49,7 @@ jobs:
       - name: Option For Test
         working-directory: BearTV
         run: |
-           sed -i 's|create("", 0)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)|' app/src/main/java/com/fongmi/android/tv/bean/Config.java
+           # sed -i 's|create("", 0)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)|' app/src/main/java/com/fongmi/android/tv/bean/Config.java
            sed -i 's|create("", 1)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 1)|' app/src/main/java/com/fongmi/android/tv/bean/Config.java
            sed -i 's|create("", 2)|create("https://tool.weetai.cn/api", 2)|' app/src/main/java/com/fongmi/android/tv/bean/Config.java
            sed -i 's|"https://raw.githubusercontent.com/FongMi/TV/release/release/"|"https://raw.githubusercontent.com/hfr1107/BearTV/release/release/"|' /app/src/main/java/com/fongmi/android/tv/utils/Updater.java
