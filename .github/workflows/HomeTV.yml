@@ -41,9 +41,11 @@ jobs:
           git clone ${{ env.upStream }} ${{ env.repoName }}
           #获取目录
            CURRENT_DIR=$(cd $(dirname $0); pwd)
-           num=$(find $CURRENT_DIR -name gradlew  | awk -F"/" '{print NF-1}')
-           DIR=$(find $CURRENT_DIR -name gradlew  | cut -d \/ -f$num)
+           num=$(find $CURRENT_DIR -name gradlew | grep -v exo | awk -F"/" '{print NF-1}')
+           DIR=$(find $CURRENT_DIR -name gradlew | grep -v exo | cut -d \/ -f$num)
            cd $CURRENT_DIR/$DIR
+           #删除release的APK
+           rm -rf $CURRENT_DIR/$DIR/release/*
            sed -i 's|create("", 0)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/beartv.json", 0)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
            sed -i 's|create("", 1)|create("https://agit.ai/hfr1107/vvbox/raw/branch/main/live/zb.txt", 1)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
            sed -i 's|create("", 2)|create("https://tool.weetai.cn/api", 2)|' $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
