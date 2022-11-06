@@ -5,8 +5,12 @@ CURRENT_DIR=$(cd $(dirname $0); pwd)
 num=$(find $CURRENT_DIR -name gradlew | grep -v exo | awk -F"/" '{print NF-1}')
 DIR=$(find $CURRENT_DIR -name gradlew | grep -v exo | cut -d \/ -f$num)
 cd $CURRENT_DIR/$DIR
-#删除release的APK
-rm -rf $CURRENT_DIR/$DIR/release/*
+#添加预置接口
+sed -i "s|^\(create\).*\(0\)$|\1\(\'https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/beartv.json\', \2|" $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+sed -i "s|^\(create\).*\(1\)$|\1\(\'https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/live\/zb.txt\', \2|" $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+sed -i "s|^\(create\).*\(2\)$|\1\(\'https:\/\/tool.weetai.cn\/api\', \2|" $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/bean/Config.java
+#修改更新地址
+sed -i "s#FongMi#hfr1107#g" $CURRENT_DIR/$DIR/app/src/main/java/com/fongmi/android/tv/utils/Updater.java
 #添加PY支持
 #mkdir $CURRENT_DIR/$DIR/app/libs
 #wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid.aar" -O $CURRENT_DIR/$DIR/app/libs/pyramid.aar
