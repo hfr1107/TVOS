@@ -123,6 +123,8 @@ jobs:
           sed -i '$a\RELEASE_KEY_ALIAS=${{ secrets.ALIAS }}'            ./gradle.properties
           sed -i '$a\RELEASE_STORE_PASSWORD=${{ secrets.PW }}'       ./gradle.properties
           sed -i '$a\RELEASE_KEY_PASSWORD=${{ secrets.PW }}'         ./gradle.properties      
+      - name: DIY
+        run: |
           chmod +x diy-TVOS.sh
           bash ${{ github.workspace }}/diy-TVOS.sh
       - name: Build With Gradle
