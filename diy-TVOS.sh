@@ -5,7 +5,7 @@ sed -i "s|^\(create\).*\(0\)$|\1\(\'https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/bran
 sed -i "s|^\(create\).*\(1\)$|\1\(\'https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/live\/zb.txt\', \2|" app/src/main/java/com/fongmi/android/tv/bean/Config.java
 sed -i "s|^\(create\).*\(2\)$|\1\(\'https:\/\/tool.weetai.cn\/api\', \2|" app/src/main/java/com/fongmi/android/tv/bean/Config.java
 #修改更新地址
-sed -i "s#FongMi#hfr1107#g" app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+sed -i "s/FongMi/hfr1107/g" app/src/main/java/com/fongmi/android/tv/utils/Updater.java
 #添加PY支持
 #mkdir $CURRENT_DIR/$DIR/app/libs
 #wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid.aar" -O $CURRENT_DIR/$DIR/app/libs/pyramid.aar
