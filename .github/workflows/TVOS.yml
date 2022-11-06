@@ -1,4 +1,4 @@
-name: BearTV
+name: TV
 on:
   schedule:
     - cron: 45 2 * * *
@@ -7,9 +7,9 @@ on:
 
 env:
   userName: hfr1107
-  repoName: BearTV
+  repoName: TV
   branchName: dev
-  appName: BearTV
+  appName: TV
 
 jobs:
   prepare:
