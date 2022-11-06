@@ -121,8 +121,8 @@ jobs:
           sed -i "s|^\(create\).*\(2\)$|\1\(\'https:\/\/tool.weetai.cn\/api\', \2|" ./app/src/main/java/com/fongmi/android/tv/bean/Config.java
           sed -i "s|^\(create\).*\(1\)$|\1\(\'https:\/\/agit.ai\/hfr1107\/vvbox\/raw\/branch\/main\/live\/zb.txt\', \2|" app/src/main/java/com/fongmi/android/tv/bean/Config.java
           sed -i "s|^\(create\).*\(2\)$|\1\(\'https:\/\/tool.weetai.cn\/api\', \2|" app/src/main/java/com/fongmi/android/tv/bean/Config.java
-          sed -i "s#FongMi\/TV#hfr1107\/BearTV#g" ./app/src/main/java/com/fongmi/android/tv/utils/Updater.java 
-          sed -i "s#FongMi\/TV#hfr1107\/BearTV#g" app/src/main/java/com/fongmi/android/tv/utils/Updater.java
+          sed -i "s#FongMi#hfr1107#g" ./app/src/main/java/com/fongmi/android/tv/utils/Updater.java 
+          sed -i "s#FongMi#hfr1107#g" app/src/main/java/com/fongmi/android/tv/utils/Updater.java
       - name: Build With Gradle
         continue-on-error: true
         working-directory: source/
