@@ -7,10 +7,10 @@ on:
 
 
 env:
-  userName: FongMi
+  userName: hfr1107
   repoName: TV
   branchName: dev
-  appName: 蜂蜜TV
+  appName: TV
 
 jobs:
   prepare:
